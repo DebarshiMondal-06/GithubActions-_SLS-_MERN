@@ -18,7 +18,7 @@ jobs:
           node-version: 12
 
       - name: Installing Serverless Framework
-        run: yarn install -g serverless serverless-s3-sync
+        run: yarn global add serverless serverless-s3-sync
 
       - name: Installing all Dependencies
         run: yarn install
