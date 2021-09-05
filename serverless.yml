@@ -1,0 +1,83 @@
+service: song-lyric
+
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  stage: development
+  region: ap-south-1
+  lambdaHashingVersion: 20201221
+
+
+
+package:
+  individually: true
+  patterns:
+    - '!package-lock.json'
+    - '!package.json'
+    - '!node_modules/**'
+    - '!Frontend/**'
+  
+
+plugins: 
+ - serverless-s3-sync
+custom:
+ s3Sync:
+  - bucketName: mern-serverless-buckets
+    localDir: ./Frontend/build/
+
+
+functions:
+  song:
+    handler: song.handler
+    name: Song_Function
+    layers:
+      - arn:aws:lambda:ap-south-1:143151111018:layer:mongoose:2
+    events:
+      - http: 
+          path: /addSong
+          method: POST
+          cors: true
+      - http: GET /
+      - http: GET /oneSong
+      - http: GET /deleteSong
+    package:
+      patterns: 
+        - '!lyric.js'
+  lyric:
+    handler: lyric.handler
+    name: Lyric_Function
+    layers:
+      - arn:aws:lambda:ap-south-1:143151111018:layer:mongoose:2
+    events:
+      - http: GET /addlikes
+      - http:
+          path: /addlyric
+          method: POST
+          cors: true
+    package:
+      patterns: 
+        - '!song.js'
+
+
+resources:
+ Resources:
+  S3Bucket:
+   Type: AWS::S3::Bucket
+   Properties:
+    AccessControl: PublicRead
+    WebsiteConfiguration:
+      IndexDocument: index.html
+      ErrorDocument: error.html
+    BucketName: mern-serverless-buckets
+  BucketPolicy:
+   Type: AWS::S3::BucketPolicy
+   Properties:
+    Bucket: !Ref S3Bucket
+    PolicyDocument:
+     Statement:
+      - Action:
+         - 's3:GetObject'
+        Effect: Allow
+        Resource: 'arn:aws:s3:::mern-serverless-buckets/*'
+        Principal: '*'

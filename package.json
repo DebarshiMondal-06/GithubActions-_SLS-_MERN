@@ -1,0 +1,15 @@
+{
+  "dependencies": {
+    "serverless-s3-sync": "^1.17.1"
+  },
+  "name": "ci-cd_mern",
+  "version": "1.0.0",
+  "main": "handler.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
