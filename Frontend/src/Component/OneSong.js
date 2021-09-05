@@ -40,7 +40,7 @@ const OneSong = () => {
       <div className="col-md-6">
         <AddLyric getData={getData} title={title} id={id} />
         <article>
-          <h5 style={{ fontFamily: 'cursive', marginTop: 40 }}>Available Lyrics</h5>
+          <h5 style={{ fontFamily: 'cursive', marginTop: 40 }}>Available Lyrics: </h5>
           <div className="mt-4">
             {
               lyric && lyric.map((item, i) => {
