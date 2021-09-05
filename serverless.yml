@@ -32,7 +32,7 @@ functions:
     handler: song.handler
     name: Song_Function
     layers:
-      - arn:aws:lambda:ap-south-1:143151111018:layer:mongoose:2
+      - !Sub arn:aws:lambda:${self:provider.region}:${AWS::AccountId}:layer:mongoose:2
     events:
       - http: 
           path: /addSong
@@ -48,7 +48,7 @@ functions:
     handler: lyric.handler
     name: Lyric_Function
     layers:
-      - arn:aws:lambda:ap-south-1:143151111018:layer:mongoose:2
+      - !Sub arn:aws:lambda:${self:provider.region}:${AWS::AccountId}:layer:mongoose:2
     events:
       - http: GET /addlikes
       - http:
