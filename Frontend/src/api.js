@@ -1,5 +1,5 @@
 import Axios from "axios"
-var url = 'https://f203id85ax.execute-api.ap-south-1.amazonaws.com/development';
+var url = 'https://zyq3sgi3k1.execute-api.ap-south-1.amazonaws.com/development';
 
 
 
