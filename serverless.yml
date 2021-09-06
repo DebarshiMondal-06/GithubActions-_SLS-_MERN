@@ -19,12 +19,12 @@ package:
     - '!Frontend/**'
   
 
-plugins: 
- - serverless-s3-sync
-custom:
- s3Sync:
-  - bucketName: mern-serverless-buckets
-    localDir: ./Frontend/build/
+# plugins: 
+#  - serverless-s3-sync
+# custom:
+#  s3Sync:
+#   - bucketName: mern-serverless-buckets
+#     localDir: ./Frontend/build/
 
 
 functions:
@@ -60,24 +60,24 @@ functions:
         - '!song.js'
 
 
-resources:
- Resources:
-  S3Bucket:
-   Type: AWS::S3::Bucket
-   Properties:
-    AccessControl: PublicRead
-    WebsiteConfiguration:
-      IndexDocument: index.html
-      ErrorDocument: error.html
-    BucketName: mern-serverless-buckets
-  BucketPolicy:
-   Type: AWS::S3::BucketPolicy
-   Properties:
-    Bucket: !Ref S3Bucket
-    PolicyDocument:
-     Statement:
-      - Action:
-         - 's3:GetObject'
-        Effect: Allow
-        Resource: 'arn:aws:s3:::mern-serverless-buckets/*'
-        Principal: '*'
+# resources:
+#  Resources:
+#   S3Bucket:
+#    Type: AWS::S3::Bucket
+#    Properties:
+#     AccessControl: PublicRead
+#     WebsiteConfiguration:
+#       IndexDocument: index.html
+#       ErrorDocument: error.html
+#     BucketName: mern-serverless-buckets
+#   BucketPolicy:
+#    Type: AWS::S3::BucketPolicy
+#    Properties:
+#     Bucket: !Ref S3Bucket
+#     PolicyDocument:
+#      Statement:
+#       - Action:
+#          - 's3:GetObject'
+#         Effect: Allow
+#         Resource: 'arn:aws:s3:::mern-serverless-buckets/*'
+#         Principal: '*'

@@ -1,5 +1,7 @@
 import Axios from "axios"
-var url = 'https://ffxi1lj5l6.execute-api.ap-south-1.amazonaws.com/development';
+var url = 'https://f203id85ax.execute-api.ap-south-1.amazonaws.com/development';
+
+
 
 
 export const allSong = async () => {
@@ -25,7 +27,7 @@ export const addlyric = async (data) => {
     url: `${url}/addlyric`,
     method: 'POST',
     data
-  })
+  });
 }
 
 export const addSong = async (data) => {
