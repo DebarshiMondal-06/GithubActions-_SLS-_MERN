@@ -40,7 +40,7 @@ const SongList = () => {
               <Link to="/add">
                 <button className="btn btn-secondary" style={{ float: 'right' }}>Add</button>
               </Link>
-              <h1 className="heading">SongList</h1>
+              <h1 className="heading">Available SongList</h1>
             </article>
             {
               data.map((items, i) => {
